@@ -10,7 +10,12 @@ JHttpsWitch is the easy, open source way for distribute HTTP(S) request to backe
 - opensource
 
 # Get started
-
+```
+git clone https://github.com/dfriedenberger/JHttpsWitch.git
+mvn compile 
+mvn exec:java -Dexec.mainClass="de.frittenburger.core.app.Configure"
+mvn exec:java -Dexec.mainClass="de.frittenburger.core.app.JHttpsWitch"
+```
 
 # Routing
 - ssl redirect
