@@ -1,0 +1,41 @@
+[ {
+  "pattern" : [ "[Bb]ot|index|[Ss]pider|[Cc]rawl|wget|slurp", "Mediapartners-Google|AppEngine-Google", "nagios-plugins|facebookexternalhit|feedzirra|Nutch", "Serverstate User Agent", "Riddler|Seobility|360Spider", "InternetSeer.com", "^Java/[0-9._]+$", "Morfeus Fucking Scanner", "BingPreview" ],
+  "robot" : true,
+  "description" : "Bot"
+}, {
+  "pattern" : [ "^Mozilla/5.0 \\(.+\\) AppleWebKit/[0-9.]+ \\(KHTML, like Gecko\\) Chrome/[0-9.]+ Safari/[0-9.]+$" ],
+  "robot" : false,
+  "description" : "Google Chrome"
+}, {
+  "pattern" : [ "^Mozilla/5.0 \\(.+\\) AppleWebKit/[0-9.]+ \\(KHTML, like Gecko\\) Version/[0-9.]+ Safari/[0-9.]+$" ],
+  "robot" : false,
+  "description" : "Safari"
+}, {
+  "pattern" : [ "^Mozilla/5.0 \\(.+\\) AppleWebKit/[0-9.]+ \\(KHTML, like Gecko\\) Chrome/[0-9.]+ Mobile Safari/[0-9.]+" ],
+  "robot" : false,
+  "description" : "Mobile Chrome"
+}, {
+  "pattern" : [ "^Mozilla/5.0 \\(.+\\) AppleWebKit/[0-9.]+ \\(KHTML, like Gecko\\) [a-zA-Z]+/[0-9.]+ Mobile[/0-9a-zA-Z.]* Safari/[0-9.]+" ],
+  "robot" : false,
+  "description" : "Mobile Safari"
+}, {
+  "pattern" : [ "^Mozilla/5.0 \\(.+\\) Gecko(/[0-9]+){0,1} Firefox/[0-9a-z.]+$", "^Mozilla/5.0 \\(.+\\) Gecko(/[0-9]+){0,1} Firefox/[0-9a-z.]+ \\((.NET CLR [0-9.; ]+)+\\)$", "^Mozilla/5.0 \\(.+\\) Gecko(/[0-9]+){0,1} Firefox/[0-9a-z.]+ Paros/[0-9.]+$", "^Mozilla/5.0 \\(.+\\) Gecko/[0-9]+ Ubuntu/[0-9.]+ \\([a-zA-Z]+\\) Firefox/[0-9a-z.]+$", "^Mozilla/5.0 \\(.+\\) Gecko/[0-9]+ Ubuntu/[0-9.]+ \\([a-zA-Z]+\\) Firefox/[0-9a-z.]+$" ],
+  "robot" : false,
+  "description" : "Firefox"
+}, {
+  "pattern" : [ "^Opera/[0-9.]+ \\(.+\\) Presto/[0-9.]+ Version/[0-9.]+$" ],
+  "robot" : false,
+  "description" : "Opera"
+}, {
+  "pattern" : [ "^Mozilla/[0-9.]+ \\(compatible; MSIE [0-9.]+; Windows" ],
+  "robot" : false,
+  "description" : "Internet Explorer"
+}, {
+  "pattern" : [ "Mozilla/5.0 \\(.+\\) like Gecko$" ],
+  "robot" : false,
+  "description" : "Internet Explorer"
+}, {
+  "pattern" : [ "^(Mozilla.*(Gecko|KHTML|MSIE|Presto|Trident)|Opera).*$" ],
+  "robot" : false,
+  "description" : "Browsers"
+} ]

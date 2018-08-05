@@ -1,5 +1,4 @@
 # Ignore everything in this directory
 *
-# Except this files
+# Except this file
 !.gitignore
-!*.template

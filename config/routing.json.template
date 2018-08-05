@@ -1,0 +1,11 @@
+[ {
+  "sslEnabled" : true,
+  "hosts" : [ "example.org", "www.example.org" ],
+  "urls" : [ "*" ],
+  "target" : "http://localhost:8080"
+}, {
+  "sslEnabled" : true,
+  "hosts" : [ "*" ],
+  "urls" : [ "*" ],
+  "target" : "http://localhost:9090"
+} ]
