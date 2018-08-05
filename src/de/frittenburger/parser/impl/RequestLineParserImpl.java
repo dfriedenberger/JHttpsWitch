@@ -45,10 +45,10 @@ public class RequestLineParserImpl implements RequestLineParser {
 		
 		//Parse
 		int i = url.indexOf("?");
-		String param = "";
+		//String param = "";
 		if(i >= 0) 
 		{
-			param = url.substring(i);
+			//param = url.substring(i);
 			url = url.substring(0,i);
 		}
 		

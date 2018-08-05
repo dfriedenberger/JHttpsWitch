@@ -5,8 +5,8 @@ SELECT
 		r.LOAD_DTS,  -- Date
 		r.Url,       -- Url
 		r.MimeType,  -- MimeType
-		r.Referer    -- Referer
-	
+		r.Referer,   -- Referer
+	    r.Status     -- Http Status code
 	FROM 
 		HUB_Host h, 
 		HUB_Client c, 

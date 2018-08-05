@@ -96,9 +96,11 @@ public class TrackingPointCalculatorImpl implements TrackingPointCalculator, Tra
 				Link lnk = new Link(hubClient, hubHost);
 				datawareHouse.addLink(lnk);
 				
-				
+				int status = Integer.parseInt(p.getParameter().get(P_Status));
+
 				Satellite sRequest = new Satellite("Request", lnk);
 				sRequest.setAttribute("Url",p.getParameter().get(P_Url));
+				sRequest.setAttribute("Status",status);
 				sRequest.setAttribute("MimeType",mimeType);
 				sRequest.setAttribute("Referer",referer);
 				sRequest.setLOAD_DTS(p.getDate()); 
@@ -149,6 +151,7 @@ public class TrackingPointCalculatorImpl implements TrackingPointCalculator, Tra
 		bv.defineText("Url");
 		bv.defineText("MimeType");
 		bv.defineText("Referer");
+		bv.defineInteger("Status");
 
 		bv.load("sql/selectBV_Request.sql");
 		datawareHouse.calculate(bv);
