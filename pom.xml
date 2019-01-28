@@ -3,6 +3,12 @@
   <groupId>de.frittenburger.jhttpswitch</groupId>
   <artifactId>JHttpsWitch2</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  
+  <properties>
+     <jacksonxml.version>2.9.8</jacksonxml.version>
+  </properties>
+  
+  
   <build>
     <sourceDirectory>src</sourceDirectory>
     <testSourceDirectory>test</testSourceDirectory>
@@ -22,19 +28,19 @@
   	<dependency>
   		<groupId>com.fasterxml.jackson.core</groupId>
   		<artifactId>jackson-core</artifactId>
-  		<version>2.9.7</version>
+  		<version>${jacksonxml.version}</version>
   		<type>jar</type>
   	</dependency>
   	<dependency>
   		<groupId>com.fasterxml.jackson.core</groupId>
   		<artifactId>jackson-annotations</artifactId>
-  		<version>2.9.7</version>
+  		<version>${jacksonxml.version}</version>
   		<type>jar</type>
   	</dependency>
   	<dependency>
   		<groupId>com.fasterxml.jackson.core</groupId>
   		<artifactId>jackson-databind</artifactId>
-  		<version>2.9.7</version>
+  		<version>${jacksonxml.version}</version>
   		<type>jar</type>
   	</dependency>
   	<dependency>
