@@ -34,35 +34,41 @@ import javax.net.ssl.TrustManager;
 
 import org.apache.log4j.Logger;
 
+import de.frittenburger.core.bo.Protocol;
+import de.frittenburger.io.impl.SocketWrapperImpl;
+import de.frittenburger.io.interfaces.SocketWrapper;
+
 
 public class SocketBuilder {
 
 	private final Logger logger = Logger.getLogger(this.getClass());
 	private boolean sslEnabled = false;
 	private SSLContext sslContext = null;
+	private Protocol protocol = Protocol.HTTP;
 
 	public SocketBuilder setSSLEnabled(boolean sslEnabled) throws NoSuchAlgorithmException {
 		this.sslEnabled = sslEnabled;
 		this.sslContext = SSLContext.getInstance("SSL");
+		this.protocol = Protocol.HTTPS;
 		return this;
 	}
 
-	public Socket build() throws UnknownHostException, IOException, GeneralSecurityException {
+	public SocketWrapper build() throws UnknownHostException, IOException, GeneralSecurityException {
                  
-                Socket socket = null;
+        Socket socket = null;
 
 		if (sslEnabled) {
 			logger.debug("build ssl socket");
 			sslContext.init(null,  new TrustManager[]{new ClientTrustManager()}, new SecureRandom());
 			socket = sslContext.getSocketFactory().createSocket();
 		} else {
-		        logger.debug("build socket");
-		        socket = new Socket();
-                }
-		logger.debug("configure socket timeout");
-                socket.setSoTimeout(10 * 10000);
-		return socket;
+	        logger.debug("build socket");
+	        socket = new Socket();
+        }
+		return new SocketWrapperImpl(socket,protocol);
 
 	}
+
+	
 
 }

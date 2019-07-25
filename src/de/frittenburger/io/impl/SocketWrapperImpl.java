@@ -46,6 +46,7 @@ public class SocketWrapperImpl implements SocketWrapper, HttpConstants  {
 	public SocketWrapperImpl(Socket socket, Protocol protocol) {
 		this.socket = socket;
 		try {
+			logger.debug("configure socket timeout to " + SO_TIMEOUT);
 			this.socket.setSoTimeout(SO_TIMEOUT);
 		} catch (SocketException e) {
 			logger.error(e);
@@ -88,6 +89,7 @@ public class SocketWrapperImpl implements SocketWrapper, HttpConstants  {
 
 	@Override
 	public void connect(InetSocketAddress addr) throws IOException {
+		logger.debug("connect with timeout " + CONNECT_TIMEOUT);
 		socket.connect(addr,CONNECT_TIMEOUT);
 	}
 	

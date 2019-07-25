@@ -24,7 +24,6 @@ package de.frittenburger.core.impl;
  */
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.net.Socket;
 import java.net.URL;
 import java.security.GeneralSecurityException;
 
@@ -34,7 +33,6 @@ import de.frittenburger.core.bo.Protocol;
 import de.frittenburger.core.interfaces.Client;
 import de.frittenburger.io.impl.HttpRequestOutputStreamWriterImpl;
 import de.frittenburger.io.impl.HttpResponseInputStreamReaderImpl;
-import de.frittenburger.io.impl.SocketWrapperImpl;
 import de.frittenburger.io.interfaces.SocketWrapper;
 import de.frittenburger.parser.impl.HttpHeaderParserImpl;
 import de.frittenburger.parser.impl.ResponseLineParserImpl;
@@ -72,7 +70,7 @@ public class ClientBuilder {
 
 	public Client build() throws IOException, GeneralSecurityException, RuntimeException, RuntimeException, ReflectiveOperationException {
 		
-		Socket socket = null;
+		SocketWrapper socket = null;
 		switch(protocol)
 		{
 		case HTTP:			
@@ -88,10 +86,8 @@ public class ClientBuilder {
 		default:
 			throw new RuntimeException("not implemented "+protocol);
 		}
-		
-		SocketWrapper socketWrapper = new SocketWrapperImpl(socket,protocol);
 
-		return new ClientImpl(socketWrapper,host,port, new HttpRequestOutputStreamWriterImpl(), 
+		return new ClientImpl(socket,host,port, new HttpRequestOutputStreamWriterImpl(), 
 				new HttpResponseInputStreamReaderImpl(new ResponseLineParserImpl(), new HttpHeaderParserImpl()));
 		
 	}

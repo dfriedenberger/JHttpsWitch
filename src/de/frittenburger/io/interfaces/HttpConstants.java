@@ -25,7 +25,7 @@ package de.frittenburger.io.interfaces;
 public interface HttpConstants {
 	
 	final static int SENDSIZE = 524288; //0x20000
-	final static int SO_TIMEOUT = 3000; //read timeout 
+	final static int SO_TIMEOUT = 10000; //read timeout 
 	final static int CONNECT_TIMEOUT = 500; 
 
 }
