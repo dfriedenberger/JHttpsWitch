@@ -39,7 +39,7 @@ public class RequestLineParserImpl implements RequestLineParser {
 			throw new IOException(line +" <= not parsable");
 		}
 		
-		String method = p[0];
+		String method = p[0].toUpperCase();
 		String url = p[1];
 		//String proto = p[2];
 		

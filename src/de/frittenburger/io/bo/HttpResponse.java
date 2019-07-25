@@ -100,4 +100,5 @@ public class HttpResponse {
 	public HttpHeaders getHttpTrailers() {
 		return httpTrailers;
 	}
+
 }

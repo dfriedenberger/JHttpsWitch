@@ -31,8 +31,13 @@ import java.sql.SQLException;
 import java.util.List;
 
 import javax.naming.NamingException;
+
 import org.apache.log4j.Logger;
 
+import de.frittenburger.cache.impl.CacheMapImpl;
+import de.frittenburger.cache.impl.CacheableTesterImpl;
+import de.frittenburger.cache.impl.CacheImpl;
+import de.frittenburger.cache.interfaces.Cache;
 import de.frittenburger.core.bo.Protocol;
 import de.frittenburger.core.bo.ServerConfig;
 import de.frittenburger.core.interfaces.ConnectionPool;
@@ -47,6 +52,7 @@ import de.frittenburger.io.impl.HttpRequestInputStreamReaderImpl;
 import de.frittenburger.io.impl.HttpResponseOutputStreamWriterImpl;
 import de.frittenburger.io.impl.PersistenceServiceImpl;
 import de.frittenburger.io.impl.ServerSocketWrapperImpl;
+import de.frittenburger.io.interfaces.HttpConstants;
 import de.frittenburger.io.interfaces.ServerSocketWrapper;
 import de.frittenburger.parser.bo.UserAgent;
 import de.frittenburger.parser.impl.HttpHeaderParserImpl;
@@ -78,6 +84,7 @@ public class ServerBuilder {
 
 	public static ConnectionPool clientpool = new ConnectionPoolImpl();
 	public static Firewall firewall = new FirewallImpl();
+	public static Cache cache = new CacheImpl(HttpConstants.CACHE_SIZE,new CacheMapImpl(),new CacheableTesterImpl());
 	public static UserAgentParser userAgentParser = new UserAgentParserImpl();
 	public static SqlService sqlService = new SqlServiceImpl();
 	public static TrackingQueue trackingQueue = new TrackingQueueImpl(
@@ -106,7 +113,7 @@ public class ServerBuilder {
 		for(int i = 0;i < poolSize;i++)
 		{
 			ConnectionImpl clientHandler = new ConnectionImpl(new StreamHandlerImpl(new TargetHandlerImpl(), firewall, tracking,
-					routing, new HttpRequestInputStreamReaderImpl(requestLineParser, httpHeaderParser), new HttpResponseOutputStreamWriterImpl()));
+					routing, cache, new HttpRequestInputStreamReaderImpl(requestLineParser, httpHeaderParser), new HttpResponseOutputStreamWriterImpl()));
 			clientHandler.start();
 			clientpool.addConnection(clientHandler);
 		}

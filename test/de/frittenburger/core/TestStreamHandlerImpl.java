@@ -24,6 +24,7 @@ package de.frittenburger.core;
  */
 import org.junit.Test;
 
+import de.frittenburger.cache.interfaces.Cache;
 import de.frittenburger.core.bo.Protocol;
 import de.frittenburger.core.impl.StreamHandlerImpl;
 import de.frittenburger.core.interfaces.TargetHandler;
@@ -37,7 +38,6 @@ import de.frittenburger.io.interfaces.HttpResponseOutputStreamWriter;
 import de.frittenburger.routing.bo.Target;
 import de.frittenburger.routing.interfaces.Routing;
 import de.frittenburger.tracking.interfaces.Tracking;
-
 import static org.mockito.Mockito.*;
 
 import java.io.ByteArrayInputStream;
@@ -86,13 +86,14 @@ public class TestStreamHandlerImpl {
 		
 		Tracking tracking = mock(Tracking.class);
 		
-	
+		Cache cache = mock(Cache.class);
+
 		
 		HttpRequestInputStreamReader httpInputStreamReader = mock(HttpRequestInputStreamReader.class);
 		when(httpInputStreamReader.read(in)).thenReturn(req);
 		HttpResponseOutputStreamWriter httpOutputStreamWriter = mock(HttpResponseOutputStreamWriter.class);
 		
-		StreamHandler handler = new StreamHandlerImpl(requestHandler, firewall, tracking, routing,httpInputStreamReader,httpOutputStreamWriter);
+		StreamHandler handler = new StreamHandlerImpl(requestHandler, firewall, tracking, routing,cache, httpInputStreamReader,httpOutputStreamWriter);
 		handler.handle(Protocol.HTTPS,addr,in, out);
 		
 		verify(tracking).requestEvent(addr,"host", "url", "referer", "agent",200,"contentType");

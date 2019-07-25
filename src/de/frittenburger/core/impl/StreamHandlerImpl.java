@@ -29,6 +29,7 @@ import java.net.InetAddress;
 
 import org.apache.log4j.Logger;
 
+import de.frittenburger.cache.interfaces.Cache;
 import de.frittenburger.core.interfaces.TargetHandler;
 import de.frittenburger.core.bo.Protocol;
 import de.frittenburger.core.interfaces.StreamHandler;
@@ -53,13 +54,15 @@ public class StreamHandlerImpl implements StreamHandler {
 	private final Firewall firewall;
 	private final Tracking tracking;
 	private final Routing routing;
-	
-	public StreamHandlerImpl(TargetHandler requestHandler,Firewall firewall,Tracking tracking,Routing routing,HttpRequestInputStreamReader httpInputStreamReader,HttpResponseOutputStreamWriter httpOutputStreamWriter)
+	private final Cache cache;
+
+	public StreamHandlerImpl(TargetHandler requestHandler,Firewall firewall,Tracking tracking,Routing routing,Cache cache,HttpRequestInputStreamReader httpInputStreamReader,HttpResponseOutputStreamWriter httpOutputStreamWriter)
 	{
 		this.requestHandler = requestHandler;
 		this.firewall = firewall;
 		this.tracking = tracking;
 		this.routing = routing;
+		this.cache = cache;
 		this.httpInputStreamReader = httpInputStreamReader;
 		this.httpOutputStreamWriter = httpOutputStreamWriter;
 	}
@@ -90,9 +93,15 @@ public class StreamHandlerImpl implements StreamHandler {
 					logger.error("target not found");
 					res = Builder.custom(HttpResponseBuilder.class).configureTargetNotFound(req.getHttpHeaders().getHost()).build();
 				}
+				else if(cache.contains(req))
+				{
+					logger.info("found in cache");
+					res = cache.get(req);
+				}
 				else
 				{
 					res = requestHandler.handle(target,req);
+					cache.put(req,res);
 				}
 				
 	        } catch (Exception e) {
