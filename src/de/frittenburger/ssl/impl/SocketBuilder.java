@@ -48,15 +48,20 @@ public class SocketBuilder {
 	}
 
 	public Socket build() throws UnknownHostException, IOException, GeneralSecurityException {
-
+                 
+                Socket socket = null;
 
 		if (sslEnabled) {
 			logger.debug("build ssl socket");
 			sslContext.init(null,  new TrustManager[]{new ClientTrustManager()}, new SecureRandom());
-			return sslContext.getSocketFactory().createSocket();
-		}
-		logger.debug("build socket");
-		return new Socket();
+			socket = sslContext.getSocketFactory().createSocket();
+		} else {
+		        logger.debug("build socket");
+		        socket = new Socket();
+                }
+		logger.debug("configure socket timeout");
+                socket.setSoTimeout(10 * 10000);
+		return socket;
 
 	}
 
