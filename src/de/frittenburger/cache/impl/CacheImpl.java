@@ -61,7 +61,7 @@ public class CacheImpl implements Cache {
 			currentSize += size;
 			String key = req2keyMapper.apply(req);
 			map.put(key,res);
-			logger.info("add "+key+" to cache "+humanReadableByteCount(currentSize,true));
+			logger.info("add "+key+" to cache elements:"+map.size() + " size:"+humanReadableByteCount(currentSize,true));
 		}
 	}
 
