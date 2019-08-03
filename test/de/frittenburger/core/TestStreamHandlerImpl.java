@@ -24,7 +24,6 @@ package de.frittenburger.core;
  */
 import org.junit.Test;
 
-import de.frittenburger.cache.interfaces.Cache;
 import de.frittenburger.core.bo.Protocol;
 import de.frittenburger.core.impl.StreamHandlerImpl;
 import de.frittenburger.core.interfaces.TargetHandler;
@@ -86,14 +85,13 @@ public class TestStreamHandlerImpl {
 		
 		Tracking tracking = mock(Tracking.class);
 		
-		Cache cache = mock(Cache.class);
 
 		
 		HttpRequestInputStreamReader httpInputStreamReader = mock(HttpRequestInputStreamReader.class);
 		when(httpInputStreamReader.read(in)).thenReturn(req);
 		HttpResponseOutputStreamWriter httpOutputStreamWriter = mock(HttpResponseOutputStreamWriter.class);
 		
-		StreamHandler handler = new StreamHandlerImpl(requestHandler, firewall, tracking, routing,cache, httpInputStreamReader,httpOutputStreamWriter);
+		StreamHandler handler = new StreamHandlerImpl(requestHandler, firewall, tracking, routing, httpInputStreamReader,httpOutputStreamWriter);
 		handler.handle(Protocol.HTTPS,addr,in, out);
 		
 		verify(tracking).requestEvent(addr,"host", "url", "referer", "agent",200,"contentType");

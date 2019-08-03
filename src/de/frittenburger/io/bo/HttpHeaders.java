@@ -34,6 +34,7 @@ public class HttpHeaders {
 	private byte[] content = null;
 	private String contentType = null;
 	private String charset = null;
+    private String cacheControl = null;
 
 	private boolean keepAlive = false;
 	private boolean expect100Continue = false;
@@ -81,6 +82,12 @@ public class HttpHeaders {
 	}
 	public void setCharset(String charset) {
 		this.charset = charset;
+	}
+	public String getCacheControl() {
+		return cacheControl;
+	}
+	public void setCacheControl(String cacheControl) {
+		this.cacheControl = cacheControl;
 	}
 	public boolean isKeepAlive() {
 		return keepAlive;
