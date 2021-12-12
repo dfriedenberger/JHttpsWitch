@@ -27,6 +27,7 @@ import org.junit.Test;
 import de.frittenburger.core.bo.Protocol;
 import de.frittenburger.core.impl.StreamHandlerImpl;
 import de.frittenburger.core.interfaces.TargetHandler;
+import de.frittenburger.core.interfaces.WebsocketHandler;
 import de.frittenburger.core.interfaces.StreamHandler;
 import de.frittenburger.firewall.interfaces.Firewall;
 import de.frittenburger.io.bo.HttpHeaders;
@@ -73,7 +74,8 @@ public class TestStreamHandlerImpl {
 		InputStream in = new ByteArrayInputStream(new byte[0]);
 		OutputStream out = new ByteArrayOutputStream();
 		TargetHandler requestHandler = mock(TargetHandler.class);
-		
+		WebsocketHandler websocketHandler = mock(WebsocketHandler.class);
+
 	    Target target =  mock(Target.class); 
 		
 		Routing routing = mock(Routing.class);
@@ -91,7 +93,7 @@ public class TestStreamHandlerImpl {
 		when(httpInputStreamReader.read(in)).thenReturn(req);
 		HttpResponseOutputStreamWriter httpOutputStreamWriter = mock(HttpResponseOutputStreamWriter.class);
 		
-		StreamHandler handler = new StreamHandlerImpl(requestHandler, firewall, tracking, routing, httpInputStreamReader,httpOutputStreamWriter);
+		StreamHandler handler = new StreamHandlerImpl(requestHandler, websocketHandler, firewall, tracking, routing, httpInputStreamReader,httpOutputStreamWriter);
 		handler.handle(Protocol.HTTPS,addr,in, out);
 		
 		verify(tracking).requestEvent(addr,"host", "url", "referer", "agent",200,"contentType");

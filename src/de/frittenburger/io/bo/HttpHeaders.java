@@ -38,6 +38,7 @@ public class HttpHeaders {
 
 	private boolean keepAlive = false;
 	private boolean expect100Continue = false;
+	private boolean websocketUpgrade = false;
 	private List<String> headers = new ArrayList<String>();
 	private boolean chunkedTransferEncoding = false;
 	
@@ -101,6 +102,12 @@ public class HttpHeaders {
 	public void setExpect100Continue(boolean expect100Continue) {
 		this.expect100Continue = expect100Continue;
 	}
+	public boolean isWebsocket() {
+		return websocketUpgrade;
+	}
+	public void setWebsocket(boolean websocketUpgrade) {
+		this.websocketUpgrade = websocketUpgrade;
+	}
 	public List<String> getHeaders() {
 		return headers;
 	}
@@ -110,5 +117,6 @@ public class HttpHeaders {
 	public boolean isChunkedTransferEncoding() {
 		return chunkedTransferEncoding;
 	}
+	
 	
 }

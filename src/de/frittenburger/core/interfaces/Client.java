@@ -23,6 +23,8 @@ package de.frittenburger.core.interfaces;
  *  This copyright notice MUST APPEAR in all copies of the script!
  */
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 import de.frittenburger.io.bo.HttpRequest;
 import de.frittenburger.io.bo.HttpResponse;
@@ -36,5 +38,8 @@ public interface Client {
 	HttpResponse read() throws IOException;
 
 	void disconnect();
+
+	OutputStream getOutputStream();
+	InputStream getInputStream();
 
 }

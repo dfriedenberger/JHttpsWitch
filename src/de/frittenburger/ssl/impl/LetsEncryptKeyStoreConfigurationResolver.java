@@ -51,6 +51,13 @@ public class LetsEncryptKeyStoreConfigurationResolver implements KeyStoreConfigu
 		String rootPath = letsEncryptConfig.getLivePath();
 		
 		 File root = new File( rootPath );
+		 
+		 if(!root.exists())
+		 {
+			 logger.error("Path "+rootPath+" don't exists");
+			 return config;
+		 }
+		 
 	     File[] domains = root.listFiles(new FileFilter() {
 			
 			@Override

@@ -58,6 +58,16 @@ public class ClientImpl implements Client {
 	}
 
 	@Override
+	public OutputStream getOutputStream() {
+		return out;
+	}
+
+	@Override
+	public InputStream getInputStream() {
+		return in;
+	}
+	
+	@Override
 	public void connect() throws IOException {
 		
 		logger.debug("Connect to "+addr);
@@ -116,5 +126,7 @@ public class ClientImpl implements Client {
 		logger.debug("Disconnect from "+addr);
 		
 	}
+
+	
 
 }

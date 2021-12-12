@@ -106,7 +106,7 @@ public class ServerBuilder {
 		
 		for(int i = 0;i < poolSize;i++)
 		{
-			ConnectionImpl clientHandler = new ConnectionImpl(new StreamHandlerImpl(new TargetHandlerImpl(), firewall, tracking,
+			ConnectionImpl clientHandler = new ConnectionImpl(new StreamHandlerImpl(new TargetHandlerImpl(), new WebsocketHandlerImpl(),firewall, tracking,
 					routing, new HttpRequestInputStreamReaderImpl(requestLineParser, httpHeaderParser), new HttpResponseOutputStreamWriterImpl()));
 			clientHandler.start();
 			clientpool.addConnection(clientHandler);

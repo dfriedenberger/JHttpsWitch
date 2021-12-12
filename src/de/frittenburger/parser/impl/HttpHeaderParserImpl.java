@@ -78,6 +78,10 @@ public class HttpHeaderParserImpl implements HttpHeaderParser {
 			{
 				if(val.toLowerCase().equals("chunked")) headers.setChunkedTransferEncoding(true);
 			}
+			if(key.equals("upgrade"))
+			{
+				if(val.toLowerCase().equals("websocket")) headers.setWebsocket(true);
+			}
 		}
 	}
 

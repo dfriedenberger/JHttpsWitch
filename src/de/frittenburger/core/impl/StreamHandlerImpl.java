@@ -30,6 +30,7 @@ import java.net.InetAddress;
 import org.apache.log4j.Logger;
 
 import de.frittenburger.core.interfaces.TargetHandler;
+import de.frittenburger.core.interfaces.WebsocketHandler;
 import de.frittenburger.core.bo.Protocol;
 import de.frittenburger.core.interfaces.StreamHandler;
 import de.frittenburger.firewall.interfaces.Firewall;
@@ -50,13 +51,16 @@ public class StreamHandlerImpl implements StreamHandler {
 	private final HttpResponseOutputStreamWriter httpOutputStreamWriter;
 	
 	private final TargetHandler requestHandler;
+	private final WebsocketHandler websocketHandler;
 	private final Firewall firewall;
 	private final Tracking tracking;
 	private final Routing routing;
 
-	public StreamHandlerImpl(TargetHandler requestHandler,Firewall firewall,Tracking tracking,Routing routing,HttpRequestInputStreamReader httpInputStreamReader,HttpResponseOutputStreamWriter httpOutputStreamWriter)
+
+	public StreamHandlerImpl(TargetHandler requestHandler,WebsocketHandler websocketHandler,Firewall firewall,Tracking tracking,Routing routing,HttpRequestInputStreamReader httpInputStreamReader,HttpResponseOutputStreamWriter httpOutputStreamWriter)
 	{
 		this.requestHandler = requestHandler;
+		this.websocketHandler = websocketHandler;
 		this.firewall = firewall;
 		this.tracking = tracking;
 		this.routing = routing;
@@ -89,6 +93,14 @@ public class StreamHandlerImpl implements StreamHandler {
 				{
 					logger.error("target not found");
 					res = Builder.custom(HttpResponseBuilder.class).configureTargetNotFound(req.getHttpHeaders().getHost()).build();
+				}
+				else if(req.getHttpHeaders().isWebsocket())
+				{
+					logger.info("handle as Websocket");
+
+					websocketHandler.handle(target,req,in,out);
+					//websocket is closed
+					break;
 				}
 				else
 				{
