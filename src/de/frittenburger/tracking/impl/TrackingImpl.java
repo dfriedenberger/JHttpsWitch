@@ -25,7 +25,8 @@ package de.frittenburger.tracking.impl;
 import java.net.InetAddress;
 import java.util.Date;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.frittenburger.tracking.bo.TrackingConstants;
 import de.frittenburger.tracking.bo.TrackingPoint;
@@ -38,7 +39,7 @@ public class TrackingImpl implements Tracking, TrackingConstants {
 	
 
 
-	private final Logger logger = Logger.getLogger(this.getClass());
+	private final Logger logger = LogManager.getLogger(this.getClass());
 
 	
 	private final TrackingQueue queue;

@@ -27,7 +27,8 @@ import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.frittenburger.datawarehouse.bo.BusinessVault;
 import de.frittenburger.datawarehouse.bo.Hub;
@@ -43,7 +44,7 @@ import de.frittenburger.tracking.interfaces.TrackingPointCalculator;
 
 public class TrackingPointCalculatorImpl implements TrackingPointCalculator, TrackingConstants {
 	
-	private final Logger logger = Logger.getLogger(this.getClass());
+	private final Logger logger = LogManager.getLogger(this.getClass());
 	private final DataWarehouse datawareHouse;
 	private final UserAgentParser userAgentParser;
 	private final RefererParser refererParser;

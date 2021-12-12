@@ -27,7 +27,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetAddress;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.frittenburger.core.interfaces.TargetHandler;
 import de.frittenburger.core.bo.Protocol;
@@ -44,7 +45,7 @@ import de.frittenburger.tracking.interfaces.Tracking;
 
 public class StreamHandlerImpl implements StreamHandler {
 
-	private final Logger logger = Logger.getLogger(this.getClass());
+	private final Logger logger = LogManager.getLogger(this.getClass());
 
 	private final HttpRequestInputStreamReader httpInputStreamReader;
 	private final HttpResponseOutputStreamWriter httpOutputStreamWriter;

@@ -27,7 +27,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.frittenburger.core.interfaces.Client;
 import de.frittenburger.io.bo.HttpRequest;
@@ -38,7 +39,7 @@ import de.frittenburger.io.interfaces.SocketWrapper;
 
 public class ClientImpl implements Client {
 	
-	private final Logger logger = Logger.getLogger(this.getClass().getSimpleName());
+    private  final Logger logger = LogManager.getLogger(this.getClass().getSimpleName());
 
 	private SocketWrapper socket;
 	private InetSocketAddress addr;

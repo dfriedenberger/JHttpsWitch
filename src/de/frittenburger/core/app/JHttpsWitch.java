@@ -25,7 +25,7 @@ package de.frittenburger.core.app;
 import java.io.File;
 import java.util.List;
 
-import org.apache.log4j.xml.DOMConfigurator;
+import org.apache.logging.log4j.core.LoggerContext;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -44,8 +44,9 @@ public class JHttpsWitch {
 
 		try {
 			
-			DOMConfigurator.configureAndWatch("config/log4j.xml", 60 * 1000);
-
+		     
+			//DOMConfigurator.configureAndWatch("config/log4j.xml", 60 * 1000); //Version log4j v1.2
+			LoggerContext.getContext().setConfigLocation(new File("config/log4j.xml").toURI());
 			
 			
 			

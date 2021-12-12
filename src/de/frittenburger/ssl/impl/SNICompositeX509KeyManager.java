@@ -33,13 +33,14 @@ import javax.net.ssl.SSLParameters;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.X509KeyManager;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.security.cert.X509Certificate;
 
 public class SNICompositeX509KeyManager implements X509KeyManager {
 
-	  private final Map<String,X509KeyManager> keyManagers;
+	private final Map<String,X509KeyManager> keyManagers;
 	private String defaultHost;
 	private Logger logger;
 
@@ -49,7 +50,7 @@ public class SNICompositeX509KeyManager implements X509KeyManager {
 	   * @param keyManagers the X509 key managers, ordered with the most-preferred managers first.
 	   */
 	  public SNICompositeX509KeyManager(Map<String,X509KeyManager> keyManagers,String defaultHost) {
-			logger = Logger.getLogger(this.getClass());
+			logger = LogManager.getLogger(this.getClass());
 
 	    this.keyManagers = keyManagers;
 	    this.defaultHost = defaultHost;

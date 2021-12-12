@@ -30,7 +30,8 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.frittenburger.core.bo.Protocol;
 import de.frittenburger.io.interfaces.HttpConstants;
@@ -38,7 +39,7 @@ import de.frittenburger.io.interfaces.SocketWrapper;
 
 public class SocketWrapperImpl implements SocketWrapper, HttpConstants  {
 
-	private final Logger logger = Logger.getLogger(this.getClass());
+	private final Logger logger = LogManager.getLogger(this.getClass());
 
 	private final Socket socket;
 	private final Protocol protocol;

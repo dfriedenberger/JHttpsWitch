@@ -28,7 +28,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 import de.frittenburger.ssl.bo.KeyStoreConfig;
 import de.frittenburger.ssl.bo.LetsEncryptConfig;
@@ -36,7 +38,7 @@ import de.frittenburger.ssl.interfaces.KeyStoreConfigurationResolver;
 
 public class LetsEncryptKeyStoreConfigurationResolver implements KeyStoreConfigurationResolver {
 
-	private final Logger logger = Logger.getLogger(this.getClass());
+	private final Logger logger = LogManager.getLogger(this.getClass());
 	private final LetsEncryptConfig letsEncryptConfig;
 
 	public LetsEncryptKeyStoreConfigurationResolver(LetsEncryptConfig letsEncryptConfig) {

@@ -44,7 +44,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cert.jcajce.JcaX509CertificateConverter;
@@ -54,7 +56,7 @@ import org.bouncycastle.openssl.jcajce.JcaPEMKeyConverter;
 
 public class KeyManagerBuilder {
 	
-	private final Logger logger = Logger.getLogger(this.getClass());
+	private final Logger logger = LogManager.getLogger(this.getClass());
 	private final List<X509Certificate> certificates = new ArrayList<X509Certificate>();
 	private PrivateKey privateKey = null;
     

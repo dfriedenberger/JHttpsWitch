@@ -26,7 +26,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.frittenburger.core.interfaces.StreamHandler;
 import de.frittenburger.io.interfaces.Connection;
@@ -34,7 +35,7 @@ import de.frittenburger.io.interfaces.SocketWrapper;
 
 public class ConnectionImpl extends Thread implements Connection {
 
-	private final Logger logger = Logger.getLogger(this.getClass());
+	private final Logger logger = LogManager.getLogger(this.getClass());
 
 	private boolean lock = false;
 	private Object ob = new Object();

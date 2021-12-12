@@ -27,7 +27,8 @@ import java.sql.SQLException;
 import java.util.Map;
 import java.util.UUID;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.frittenburger.datawarehouse.bo.BusinessVault;
 import de.frittenburger.datawarehouse.bo.DataVaultItem;
@@ -40,7 +41,7 @@ import de.frittenburger.datawarehouse.interfaces.SqlService;
 
 public class DataWarehouseImpl implements DataWarehouse {
 
-	private final Logger logger = Logger.getLogger(this.getClass());
+	private final Logger logger = LogManager.getLogger(this.getClass());
 	private final SqlService service;
 
 	public DataWarehouseImpl(SqlService service) {

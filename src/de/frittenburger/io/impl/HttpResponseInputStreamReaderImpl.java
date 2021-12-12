@@ -25,7 +25,8 @@ package de.frittenburger.io.impl;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.frittenburger.io.bo.HttpResponse;
 import de.frittenburger.io.interfaces.HttpResponseInputStreamReader;
@@ -36,7 +37,7 @@ public class HttpResponseInputStreamReaderImpl extends HttpInputStreamReaderImpl
 	implements HttpResponseInputStreamReader {
 	
 
-	private final Logger logger = Logger.getLogger(this.getClass());
+	private final Logger logger = LogManager.getLogger(this.getClass());
 	private ResponseLineParser responseLineParser;
 	
 	public HttpResponseInputStreamReaderImpl(ResponseLineParser responseLineParser, HttpHeaderParser httpHeaderParser)

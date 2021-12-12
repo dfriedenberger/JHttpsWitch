@@ -25,13 +25,14 @@ package de.frittenburger.io.impl;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.frittenburger.io.bo.HttpHeaders;
 import de.frittenburger.io.interfaces.HttpConstants;
 
 public class HttpOutputStreamWriterImpl implements HttpConstants  {
-	private final Logger logger = Logger.getLogger(this.getClass());
+	private final Logger logger = LogManager.getLogger(this.getClass());
 
 	public void writeLine(OutputStream out, String line) throws IOException {
 		

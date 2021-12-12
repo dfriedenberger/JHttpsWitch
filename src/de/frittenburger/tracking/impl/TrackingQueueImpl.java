@@ -30,7 +30,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -41,7 +42,7 @@ import de.frittenburger.tracking.interfaces.TrackingQueue;
 
 public class TrackingQueueImpl extends Thread implements TrackingQueue {
 
-	private final Logger logger = Logger.getLogger(this.getClass());
+	private final Logger logger = LogManager.getLogger(this.getClass());
 
 	private List<TrackingPoint> queue = new ArrayList<TrackingPoint>();
 

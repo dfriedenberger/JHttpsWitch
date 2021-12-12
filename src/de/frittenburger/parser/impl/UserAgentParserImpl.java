@@ -2,7 +2,8 @@ package de.frittenburger.parser.impl;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.frittenburger.parser.bo.UserAgent;
 /*
@@ -32,7 +33,7 @@ import de.frittenburger.parser.interfaces.UserAgentParser;
 
 public class UserAgentParserImpl implements UserAgentParser {
 
-	private final Logger logger = Logger.getLogger(this.getClass().getSimpleName());
+	private final Logger logger = LogManager.getLogger(this.getClass().getSimpleName());
 	private List<UserAgent> agents = null;
 
 	

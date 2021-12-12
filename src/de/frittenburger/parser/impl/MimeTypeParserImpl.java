@@ -5,13 +5,14 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.frittenburger.parser.interfaces.MimeTypeParser;
 
 public class MimeTypeParserImpl implements MimeTypeParser {
 	
-	private final Logger logger = Logger.getLogger(this.getClass());
+	private final Logger logger = LogManager.getLogger(this.getClass());
 	private final Pattern pattern;
 	private final Map<String,String> mime = new HashMap<String,String>();
 	public MimeTypeParserImpl()

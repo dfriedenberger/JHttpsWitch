@@ -25,7 +25,8 @@ package de.frittenburger.io.impl;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.frittenburger.io.bo.HttpResponse;
 import de.frittenburger.io.interfaces.HttpResponseOutputStreamWriter;
@@ -34,7 +35,7 @@ public class HttpResponseOutputStreamWriterImpl extends HttpOutputStreamWriterIm
 
 	
 
-	private final Logger logger = Logger.getLogger(this.getClass());
+	private final Logger logger = LogManager.getLogger(this.getClass());
 
 	@Override
 	public void write(OutputStream out, HttpResponse res) throws IOException {

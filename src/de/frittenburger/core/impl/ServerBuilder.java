@@ -32,7 +32,8 @@ import java.util.List;
 
 import javax.naming.NamingException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.frittenburger.core.bo.Protocol;
 import de.frittenburger.core.bo.ServerConfig;
@@ -75,7 +76,7 @@ import de.frittenburger.tracking.interfaces.TrackingQueue;
 
 public class ServerBuilder {
 
-	private Logger logger = Logger.getLogger(this.getClass());
+	private Logger logger = LogManager.getLogger(this.getClass());
 
 	public static ConnectionPool clientpool = new ConnectionPoolImpl();
 	public static Firewall firewall = new FirewallImpl();

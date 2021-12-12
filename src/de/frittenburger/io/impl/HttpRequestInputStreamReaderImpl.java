@@ -25,7 +25,8 @@ package de.frittenburger.io.impl;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.frittenburger.io.bo.HttpRequest;
 import de.frittenburger.io.interfaces.HttpConstants;
@@ -36,7 +37,7 @@ import de.frittenburger.parser.interfaces.RequestLineParser;
 public class HttpRequestInputStreamReaderImpl extends HttpInputStreamReaderImpl
 		implements HttpRequestInputStreamReader , HttpConstants {
 
-	private final Logger logger = Logger.getLogger(this.getClass());
+	private final Logger logger = LogManager.getLogger(this.getClass());
 
 	RequestLineParser requestLineParser = null;
 	HttpHeaderParser httpHeaderParser = null;

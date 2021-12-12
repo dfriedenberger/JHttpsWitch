@@ -41,7 +41,9 @@ import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
 import javax.net.ssl.X509KeyManager;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 import de.frittenburger.ssl.bo.KeyStoreConfig;
 import de.frittenburger.ssl.interfaces.KeyStoreConfigurationResolver;
@@ -49,7 +51,7 @@ import de.frittenburger.ssl.interfaces.KeyStoreConfigurationResolver;
 
 public class ServerSocketBuilder {
 
-	private final Logger logger = Logger.getLogger(this.getClass());
+	private final Logger logger = LogManager.getLogger(this.getClass());
 	private int port = 80;
 	private String host = "localhost";
 	private boolean sslEnabled = false;

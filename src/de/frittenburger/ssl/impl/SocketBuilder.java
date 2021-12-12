@@ -32,7 +32,8 @@ import java.security.SecureRandom;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.frittenburger.core.bo.Protocol;
 import de.frittenburger.io.impl.SocketWrapperImpl;
@@ -41,7 +42,7 @@ import de.frittenburger.io.interfaces.SocketWrapper;
 
 public class SocketBuilder {
 
-	private final Logger logger = Logger.getLogger(this.getClass());
+	private final Logger logger = LogManager.getLogger(this.getClass());
 	private boolean sslEnabled = false;
 	private SSLContext sslContext = null;
 	private Protocol protocol = Protocol.HTTP;

@@ -26,7 +26,8 @@ package de.frittenburger.core.impl;
 import java.io.IOException;
 import java.net.InetAddress;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.frittenburger.core.interfaces.ConnectionPool;
 import de.frittenburger.core.interfaces.SocketHandler;
@@ -37,7 +38,7 @@ import de.frittenburger.tracking.interfaces.Tracking;
 
 public class SocketHandlerImpl implements SocketHandler {
 
-	private final Logger logger = Logger.getLogger(this.getClass());
+	private final Logger logger = LogManager.getLogger(this.getClass());
 	private final ConnectionPool connectionpool;
 	private final Firewall firewall;
 	private final Tracking tracking;
