@@ -9,7 +9,7 @@
   </properties>
   
   
-  <!-- <build>
+ <build>
     <sourceDirectory>src</sourceDirectory>
     <testSourceDirectory>test</testSourceDirectory>
     <plugins>
@@ -22,7 +22,7 @@
         </configuration>
       </plugin>
     </plugins>
-  </build> -->
+  </build> 
   
   <dependencies>
  

@@ -1,29 +1,24 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
-
-<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
-
-  <appender name="RollingAppender" class="org.apache.log4j.DailyRollingFileAppender">
-       <param name="File" value="log/rolling.log" />
-       <param name="DatePattern" value="'.'yyyy-MM-dd" />
-       <param name="MaxBackupIndex" value="7"/>
-       <layout class="org.apache.log4j.PatternLayout">
-          <param name="ConversionPattern" value="%d{ISO8601} %-5p [%t] %c: %m%n" />
-       </layout>
-    </appender>
-  
-   <appender name="Console" class="org.apache.log4j.ConsoleAppender">
-    <param name="threshold" value="INFO" />
-    <layout class="org.apache.log4j.PatternLayout">
-      <param name="ConversionPattern" value="%-5p [%t] %c{1}: %m%n" />
-    </layout>
-  </appender>
-
-  
-  <root>
-      <priority value="DEBUG" /> 
-      <appender-ref ref="RollingAppender" />
-      <appender-ref ref="Console" />
-  </root>
-
-</log4j:configuration>
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="DEBUG">
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+    </Console>
+    <RollingFile name="RollingFile" fileName="log/app.log"
+                 filePattern="log/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+      <PatternLayout>
+        <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+      </PatternLayout>
+      <Policies>
+        <TimeBasedTriggeringPolicy />
+        <SizeBasedTriggeringPolicy size="250 MB"/>
+      </Policies>
+    </RollingFile>
+  </Appenders>
+  <Loggers>
+    <Root level="debug">
+      <AppenderRef ref="Console"/>
+      <AppenderRef ref="RollingFile"/>
+    </Root>
+  </Loggers>
+</Configuration>
