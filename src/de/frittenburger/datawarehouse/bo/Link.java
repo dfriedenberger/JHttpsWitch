@@ -67,8 +67,8 @@ public class Link extends DataVaultItem {
 	
 	/*
 	 * A Link PK (Hash Key)
-	 * The PKs from the parent Hubs – used for lookups
-	 * The Business Key column(s) – new feature in DV 2.0
+	 * The PKs from the parent Hubs â€“ used for lookups
+	 * The Business Key column(s) â€“ new feature in DV 2.0
 	 * The Load Date (LOAD_DTS)
 	 * The Source for the record (REC_SRC)
 	 */
